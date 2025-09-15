@@ -5,7 +5,7 @@ export default function ThemeSwitch({ isLightTheme }) {
                 type='checkbox' 
                 id='theme-switch-checkbox' 
                 name='theme-switch-checkbox' 
-                checked={!isLightTheme && 'checked'}
+                // checked={!isLightTheme && 'checked'}
             />
             <label htmlFor='theme-switch-checkbox' >
                 {isLightTheme ? 'Dark theme' : 'Light theme'}

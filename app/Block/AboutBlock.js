@@ -4,6 +4,9 @@ export default function AboutBlock({ aboutData }) {
             <h2>
                 {aboutData.title}
             </h2>
+            <div className="avatar">
+                <img src="/ava.jpg" />
+            </div>
             <div className="about-block-content">
                 {
                     aboutData.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)

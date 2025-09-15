@@ -33,3 +33,38 @@ export const aboutBlockData = {
         'So I will be happy to promote, automate, or improve your business!',
     ]
 };
+
+export const serviceBlockData = {
+    title: 'What I do?',
+    items: [
+        {
+            title: 'Website development',
+            image: '/web.png',
+            description: 'From scratch to hosted website.',
+            list: [
+                'Tech documentation',
+                'Figma design',
+                'React frontend',
+                'PHP backend (Drupal, WorderPress, or even custom engine)',
+                'Deploy to web host',
+                'Basic SEO',
+                'Long-term support'
+            ]
+        },
+        {
+            title: 'API development',
+            image: '/browser.png',
+            description: 'API for your application.',
+            list: [
+                'Tech documentation',
+                'REST API, GraphQL',
+                'Long-term support'
+            ]
+        },
+        {
+            title: 'Something else?',
+            image: '/brain.png',
+            description: 'Let me know if you require something else.',
+        }
+    ]
+}
