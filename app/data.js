@@ -102,6 +102,7 @@ export const experienceBlockData = {
             list: [
                 'Drupal',
                 'GraphQL API development',
+                'Docker basics/DDEV',
                 'Postman',
                 'Git',
                 'Unit/Browser testing',
