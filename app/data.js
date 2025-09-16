@@ -68,3 +68,53 @@ export const serviceBlockData = {
         }
     ]
 }
+
+export const experienceBlockData = {
+    title: 'Where I work?',
+    items: [
+        {
+            title: 'Freelance FullStack Developer',
+            image: '/freelance.png',
+            description: "I started as a Frontend developer in a small outsource company based in Chernihiv. This job gave me a solid experience in site building.",
+            time: {
+                from: '16.05.2019',
+                to: '10.05.2022'
+            },
+            list: [
+                'HTML',
+                'CSS/SCSS',
+                'Gulp',
+                'JS',
+                'WordPress',
+                'Pixel perferct sites',
+                'Figma/Photoshop',
+                'Bootstrap'
+            ]
+        },
+        {
+            title: 'Drupal Backend Engineer',
+            image: '/gg.png',
+            description: "I started here as a Junior Backend engineer. Here I learnt a lot of stuff from Drupal site development to CI/CD basics.",
+            time: {
+                from: '10.05.2022',
+                to: 'Now'
+            },
+            list: [
+                'Drupal',
+                'GraphQL API development',
+                'Postman',
+                'Git',
+                'Unit/Browser testing',
+                'CI/CD basics',
+                'Bitbucket pipelines',
+                'SQL queries optimisation',
+                'Perfomance optimisation/Profiler',
+                'JIRA/Sprint/Poker planning',
+                'Contribution to Drupal modules',
+                'Organisation of tech meetings',
+                'Cooperation with team',
+                'Linux basics'
+            ]
+        }
+    ]
+}

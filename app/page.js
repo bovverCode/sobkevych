@@ -1,7 +1,8 @@
 import Header from './Header'
 import AboutBlock from './Block/AboutBlock';
 import ServiceBlock from './Block/ServiceBlock';
-import { menu as menuData, aboutBlockData, serviceBlockData } from './data';
+import ExperienceBlock from './Block/ExperienceBlock';
+import { menu as menuData, aboutBlockData, serviceBlockData, experienceBlockData } from './data';
 
 export default function Home() {
  return (
@@ -9,6 +10,7 @@ export default function Home() {
         <Header menu={menuData}/>
         <AboutBlock aboutData={aboutBlockData}/>
         <ServiceBlock serviceData={serviceBlockData}/>
+        <ExperienceBlock experienceData={experienceBlockData}/>
     </>
  )
 }
