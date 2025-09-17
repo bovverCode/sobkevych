@@ -108,14 +108,72 @@ export const experienceBlockData = {
                 'Unit/Browser testing',
                 'CI/CD basics',
                 'Bitbucket pipelines',
-                'SQL queries optimisation',
-                'Perfomance optimisation/Profiler',
+                'SQL queries optimization',
+                'Perfomance optimization/Profiler',
                 'JIRA/Sprint/Poker planning',
                 'Contribution to Drupal modules',
                 'Organisation of tech meetings',
                 'Cooperation with team',
                 'Linux basics'
             ]
+        }
+    ]
+}
+
+export const skillBlockData = {
+    title: 'Skills',
+    items: [
+        {
+            title: 'Hard skills',
+            list: [
+                'PHP',
+                'HTML/CSS/SCSS/JS',
+                'React',
+                'REST API/GraphQL',
+                'SQL',
+                'OOP/SOLID/DRY',
+                'CI/CD',
+                'Unit testing',
+                'GIT',
+                'Performance optimization/Profiling',
+                'SQL queries optimization',
+                'Linux basics',
+                'JIRA/Sprint/Poker planning',
+                'Contribution to Drupal modules',
+            ]
+        },
+        {
+            title: 'Technologies and Frameworks',
+            list: [
+                'Drupal/WordPress',
+                'MySQL/MariaDB',
+                'Docker/DDEV',
+                'Postman',
+                'Gulp',
+                'Bitbucket pipelines',
+                'Figma/Photoshop',
+                'Bootstrap',
+            ]   
+        },
+        {
+            title: 'Soft skills',
+            list: [
+                'Cooperation with team',
+                'Organisation of tech meetings',
+                'Task/Epic preparing in JIRA',
+                'Poker planning'
+            ]
+        }
+    ]
+};
+
+export const contactBlockData = {
+    title: 'Contact me',
+    list: [
+        {
+            text: 'Telegram',
+            image: '/telegram.png',
+            href: 'https://t.me/right_property/'
         }
     ]
 }

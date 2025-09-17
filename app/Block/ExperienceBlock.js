@@ -3,12 +3,12 @@ export default function ExperienceBlock({ experienceData }) {
         <section className="block experience-block">
             <h2>
                 {experienceData.title}
-                <div className="experience-block-row">
-                    {
-                        experienceData.items.map((expItem, index) => <ExperienceItem key={index} item={expItem}/>)
-                    }
-                </div>
             </h2>
+            <div className="experience-block-row">
+                {
+                    experienceData.items.map((expItem, index) => <ExperienceItem key={index} item={expItem}/>)
+                }
+            </div>
         </section>
     );
 }
