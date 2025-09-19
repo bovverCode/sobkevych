@@ -10,16 +10,16 @@ export const menu = [
     {
         title: 'Service',
         href: '/service/',
-        sub: [
-            {
-                title: 'Service Uzhhorod',
-                href: '/service/uzhhorod/'
-            },
-            {
-                title: 'Service Chernihiv',
-                href: '/service/chernihiv/'
-            }
-        ]
+        // sub: [
+        //     {
+        //         title: 'Service Uzhhorod',
+        //         href: '/service/uzhhorod/'
+        //     },
+        //     {
+        //         title: 'Service Chernihiv',
+        //         href: '/service/chernihiv/'
+        //     }
+        // ]
     }
 ];
 
@@ -128,13 +128,13 @@ export const skillBlockData = {
             list: [
                 'PHP',
                 'HTML/CSS/SCSS/JS',
-                'React',
                 'REST API/GraphQL',
                 'SQL',
                 'OOP/SOLID/DRY',
                 'CI/CD',
                 'Unit testing',
                 'GIT',
+                'Docker/DDEV',
                 'Performance optimization/Profiling',
                 'SQL queries optimization',
                 'Linux basics',
@@ -146,8 +146,8 @@ export const skillBlockData = {
             title: 'Technologies and Frameworks',
             list: [
                 'Drupal/WordPress',
+                'React',
                 'MySQL/MariaDB',
-                'Docker/DDEV',
                 'Postman',
                 'Gulp',
                 'Bitbucket pipelines',

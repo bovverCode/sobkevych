@@ -1,22 +1,27 @@
-import ThemeSwitch from './ThemSwitch';
+import ThemeSwitch from '@/app/Component/ThemSwitch'
+import styles from '@/app/styles/Block/Header.module.scss';
+import Container from '@/app/Component/Container'
+import { logoFont } from '@/app/layout'
 
 export default function Header({ menu }) {
     return (
-        <header className="header">
-            <HeaderWrapper>
-                <Logo/>
-            </HeaderWrapper>
-            <HeaderWrapper>
-                <Navigation items={menu}/>
-                <ThemeSwitch isLightTheme={true} />
-            </HeaderWrapper>
+        <header className={styles.header}>
+            <Container classes={styles.header_container}>
+                <HeaderWrapper>
+                    <Logo/>
+                     <Navigation items={menu}/>
+                </HeaderWrapper>
+                <HeaderWrapper>
+                    <ThemeSwitch isLightTheme={true} />
+                </HeaderWrapper>
+            </Container>
         </header>
     );
 }
 
 function HeaderWrapper({ children }) {
     return (
-        <div className="header-wrapper">
+        <div className={styles.header_wrapper}>
             {children}
         </div>
     )
@@ -24,7 +29,7 @@ function HeaderWrapper({ children }) {
 
 function Logo() {
     return (
-        <a href="/" className="logo">
+        <a href="/" className={"logo " + logoFont.className}>
             {'<sobkevych.dev/>'}
         </a>
     );
@@ -52,7 +57,7 @@ function MenuItem({ item }) {
                 {item.title}
             </a>
             {children !== null && (
-                <ul className='sub-menu'>
+                <ul className='sub_menu'>
                     {children}
                 </ul>
             )}

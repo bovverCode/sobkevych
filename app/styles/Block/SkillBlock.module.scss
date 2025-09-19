@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.skill_block {
+    background: #f9f1fd;
+    padding: 50px;
+
+    &_row {
+        @include row;
+    }
+}
+
+.skill_area {
+    @include content-card;
+    @include column2;
+}

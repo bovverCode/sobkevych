@@ -1,0 +1,14 @@
+@use '../variables' as *;
+
+.about_block {
+    &_content {
+        @include content-card;
+        max-width: 600px;
+        margin: 0 auto;
+        p {
+            & + * {
+                margin-top: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@use '../variables' as *;
+
+.header {
+    background: $box-color;
+    padding: 20px 0;
+
+    &_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &_wrapper {
+        display: flex;
+        align-items: center;
+        & > * {
+            & + * {
+                margin-left: 40px;
+            }
+        }
+    }
+}

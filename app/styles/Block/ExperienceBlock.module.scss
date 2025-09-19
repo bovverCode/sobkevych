@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.experience_block {
+    &_row {
+        @include row;
+    }
+}
+
+.experience_item {
+    @include column3;
+    @include content-card;
+    &_heading {
+        img {
+            max-width: 100%;
+            height: 140px;
+            object-fit: contain;
+        }
+    }
+
+    &_body {
+        p {
+            
+        }
+    }
+}

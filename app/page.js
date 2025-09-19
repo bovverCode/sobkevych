@@ -1,7 +1,10 @@
-import Header from './Header'
-import AboutBlock from './Block/AboutBlock';
-import ServiceBlock from './Block/ServiceBlock';
-import ExperienceBlock from './Block/ExperienceBlock';
+import Header from '@/app/Block/Header';
+import Footer from '@/app/Block/Footer';
+import AboutBlock from '@/app/Block/AboutBlock';
+import ServiceBlock from '@/app/Block/ServiceBlock';
+import ExperienceBlock from '@/app/Block/ExperienceBlock';
+import SkillBlock from '@/app/Block/SkillBlock';
+import ContactBlock from '@/app/Block/ContactBlock';
 import { 
     menu as menuData,
     aboutBlockData,
@@ -10,10 +13,6 @@ import {
     skillBlockData,
     contactBlockData
  } from './data';
-import Footer from './Footer';
-import { FooterBlock } from './Footer';
-import SkillBlock from './Block/SkillBlock';
-import ContactBlock from './Block/ContactBlock';
 
 export default function Home() {
  return (
@@ -23,12 +22,8 @@ export default function Home() {
         <ServiceBlock serviceData={serviceBlockData}/>
         <ExperienceBlock experienceData={experienceBlockData}/>
         <Footer>
-            <FooterBlock>
-                <SkillBlock skillData={skillBlockData}/>
-            </FooterBlock>
-            <FooterBlock>
-                <ContactBlock contactData={contactBlockData}/>
-            </FooterBlock>
+            <SkillBlock skillData={skillBlockData}/>
+            <ContactBlock contactData={contactBlockData}/>
         </Footer>
     </>
  )

@@ -1,35 +1,42 @@
+import Container from "@/app/Component/Container";
+import styles from '@/app/styles/Block/ExperienceBlock.module.scss'
+
 export default function ExperienceBlock({ experienceData }) {
     return (
-        <section className="block experience-block">
-            <h2>
-                {experienceData.title}
-            </h2>
-            <div className="experience-block-row">
-                {
-                    experienceData.items.map((expItem, index) => <ExperienceItem key={index} item={expItem}/>)
-                }
-            </div>
+        <section className={"block " + styles.experience_block}>
+            <Container>
+                <h2 className="text_center mb40">
+                    {experienceData.title}
+                </h2>
+                <div className={styles.experience_block_row}>
+                    {
+                        experienceData.items.map((expItem, index) => <ExperienceItem key={index} item={expItem}/>)
+                    }
+                </div>
+            </Container>
         </section>
     );
 }
 
 function ExperienceItem({ item }) {
     return (
-        <div className="experience-item">
-            <div className="experience-item-heading">
-                <img src={item.image} />
-                <h3> 
-                    {item.title} 
-                </h3>
+        <div className={styles.experience_item}>
+            <div className={styles.experience_item_heading + " mb20 text_center"}>
+                <img src={item.image}/>
             </div>
-            <div className="experience-item-body">
-                <p> 
+            <div className={styles.experience_item_body}>
+                <h4 className="mb10">
+                    {item.title}
+                </h4>
+                <p className="mb10"> 
                     {item.description} 
                 </p>
-                <span className="time">
-                    {item.time.from} - {item.time.to}
-                </span>
-                <ul>
+                <div className="mb10">
+                    <span className="time">
+                        {item.time.from} - {item.time.to}
+                    </span>
+                </div>
+                <ul className="styled_list">
                     {
                         item.list.map((text, index) => <li key={index}> {text} </li>)
                     }

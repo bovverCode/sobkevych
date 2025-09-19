@@ -1,0 +1,128 @@
+@use 'variables' as *;
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: $text-color;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+  @include color-transition;
+  &:hover {
+    color: $text-hover-color;
+  }
+}
+
+.block {
+    padding: 40px 0;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+.logo {
+  font-size: 16px;
+}
+
+.menu {
+  & > ul {
+    display: flex;
+    & > li {
+      a {
+        font-size: 20px;
+      }
+      & + * {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.mb40 {
+  margin-bottom: 40px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.text_center {
+  text-align: center;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+a, p, li, h1, h2, h3, h4, h5 {
+  line-height: $line-height;
+}
+
+ul.styled_list {
+  li {
+    padding-left: 15px;
+    position: relative;
+    font-weight: 500;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      left: 0;
+      top: 9px;
+      background: $text-color;
+    }
+    & + * {
+      margin-top: 10px;
+    }
+  }
+}
+
+.time {
+  @include value-card;
+}

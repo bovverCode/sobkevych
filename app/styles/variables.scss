@@ -1,0 +1,37 @@
+$text-color: #000;
+$text-hover-color: #fc8421;
+$box-color: #e4ffb8;
+$line-height: 1.35;
+
+@mixin color-transition {
+    transition: color .1s linear;
+}
+
+@mixin content-card {
+    background-color: $box-color;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+
+@mixin value-card {
+    padding: 3px 8px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+@mixin row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -20px;
+}
+
+@mixin column3 {
+    width: calc(100% / 3 - 40px);
+    margin: 20px;
+}
+
+@mixin column2 {
+    width: calc(100% / 2 - 40px);
+    margin: 20px;
+}

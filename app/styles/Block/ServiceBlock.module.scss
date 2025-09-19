@@ -1,0 +1,22 @@
+@use '../variables.scss' as *;
+
+.service_block {
+
+    &_row {
+        @include row;
+    }
+}
+
+.service_item {
+    @include column3;
+    @include content-card;
+    &_image {
+        img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    }
+    p {
+        font-style: italic;
+    }
+}
