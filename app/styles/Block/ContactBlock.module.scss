@@ -3,6 +3,9 @@
 .contact_block {
     background: #ecf5ff;
     padding: 50px;
+    &__dark {
+        background: #09121d;
+    }
 }
 
 .contact_item {

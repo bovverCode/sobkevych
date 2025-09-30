@@ -1,8 +1,10 @@
 import styles from '@/app/styles/Block/ContactBlock.module.scss';
 
-export default function ContactBlock({ contactData }) {
+export default function ContactBlock({ contactData, isLightTheme }) {
+    const blockClassName = [styles.contact_block, 'w50'];
+    !isLightTheme && blockClassName.push(styles.contact_block__dark);
     return (
-        <div className={styles.contact_block + " w50"}>
+        <div className={blockClassName.join(' ')}>
             <h2 className='mb20'>
                 {contactData.title}
             </h2>

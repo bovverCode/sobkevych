@@ -1,7 +1,12 @@
+// Light theme.
 $text-color: #000;
 $text-hover-color: #fc8421;
 $box-color: #e4ffb8;
 $line-height: 1.35;
+
+// Dark theme.
+$dark-text-color: #fff;
+$dark-box-color: #236426;
 
 @mixin color-transition {
     transition: color .1s linear;
@@ -11,6 +16,9 @@ $line-height: 1.35;
     background-color: $box-color;
     border-radius: 10px;
     padding: 30px;
+    &.dark {
+        background: $dark-box-color;
+    }
 }
 
 

@@ -1,16 +1,19 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ExperienceBlock.module.scss'
 
-export default function ExperienceBlock({ experienceData }) {
+export default function ExperienceBlock({ experienceData, isLightTheme }) {
     return (
-        <section className={"block " + styles.experience_block}>
+        <section className="block">
             <Container>
                 <h2 className="text_center mb40">
                     {experienceData.title}
                 </h2>
                 <div className={styles.experience_block_row}>
                     {
-                        experienceData.items.map((expItem, index) => <ExperienceItem key={index} item={expItem}/>)
+                        experienceData.items.map(
+                            (expItem, index) => 
+                            <ExperienceItem key={index} item={expItem} isLightTheme={isLightTheme}/>
+                        )
                     }
                 </div>
             </Container>
@@ -18,9 +21,11 @@ export default function ExperienceBlock({ experienceData }) {
     );
 }
 
-function ExperienceItem({ item }) {
+function ExperienceItem({ item, isLightTheme }) {
+    const itemClassName = [styles.experience_item];
+    !isLightTheme && itemClassName.push(styles.dark)
     return (
-        <div className={styles.experience_item}>
+        <div className={itemClassName.join(' ')}>
             <div className={styles.experience_item_heading + " mb20 text_center"}>
                 <img src={item.image}/>
             </div>

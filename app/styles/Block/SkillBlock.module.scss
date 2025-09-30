@@ -4,6 +4,10 @@
     background: #f9f1fd;
     padding: 50px;
 
+    &__dark {
+        background: #4e3c53;
+    }
+
     &_row {
         @include row;
     }

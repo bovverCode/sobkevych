@@ -1,9 +1,9 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ServiceBlock.module.scss'
 
-export default function ServiceBlock({ serviceData }) {
+export default function ServiceBlock({ serviceData, isLightTheme }) {
     return (
-        <section className={"block " + styles.service_block}>
+        <section className="block">
             <Container>
                 <h2 className="text_center mb40">
                     {serviceData.title}
@@ -11,7 +11,7 @@ export default function ServiceBlock({ serviceData }) {
                 <div className={styles.service_block_row}>
                     {
                         serviceData.items.map((serviceItem, index) => {
-                            return <ServiceItem key={index} item={serviceItem}/>;
+                            return <ServiceItem key={index} item={serviceItem} isLightTheme={isLightTheme}/>;
                         })
                     }
                 </div>
@@ -20,13 +20,15 @@ export default function ServiceBlock({ serviceData }) {
     )
 }
 
-function ServiceItem({ item }) {
+function ServiceItem({ item, isLightTheme }) {
     let list = null;
     if (item.hasOwnProperty('list')) {
         list = item.list.map((item, index) => <li key={index}>{item}</li>)
     }
+    const itemClassName = [styles.service_item];
+    !isLightTheme && itemClassName.push(styles.dark);
     return (
-        <div className={styles.service_item}>
+        <div className={itemClassName.join(' ')}>
             <div className={styles.service_item_image + " text_center mb20"}>
                 <img src={item.image} />
             </div>

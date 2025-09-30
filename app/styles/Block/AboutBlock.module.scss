@@ -1,6 +1,9 @@
+
 @use '../variables' as *;
 
+
 .about_block {
+    display: block;
     &_content {
         @include content-card;
         max-width: 600px;

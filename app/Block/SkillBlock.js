@@ -1,21 +1,28 @@
 import styles from '@/app/styles/Block/SkillBlock.module.scss';
 
-export default function SkillBlock({ skillData }) {
+export default function SkillBlock({ skillData, isLightTheme }) {
+    const blockClassName = [styles.skill_block, 'w50'];
+    !isLightTheme && blockClassName.push(styles.skill_block__dark);
     return (
-        <div className={styles.skill_block + " w50"}>
+        <div className={blockClassName.join(' ')}>
             <h2 className='mb20'>
                 {skillData.title}
             </h2>
             <div className={styles.skill_block_row}>
-                {skillData.items.map((areaItem, index) => <SkillArea areaData={areaItem} key={index}/>)}
+                {skillData.items.map(
+                    (areaItem, index) => 
+                    <SkillArea areaData={areaItem} key={index} isLightTheme={isLightTheme}/>
+                )}
             </div>
         </div>
     )
 }
 
-function SkillArea({ areaData }) {
+function SkillArea({ areaData, isLightTheme }) {
+    const areaClassName = [styles.skill_area];
+    !isLightTheme && areaClassName.push(styles.dark);
     return (
-        <div className={styles.skill_area}>
+        <div className={areaClassName.join(' ')}>
             <h3 className='mb10'>
                 {areaData.title}
             </h3>

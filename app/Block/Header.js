@@ -1,9 +1,15 @@
+'use client'
+
 import ThemeSwitch from '@/app/Component/ThemSwitch'
 import styles from '@/app/styles/Block/Header.module.scss';
 import Container from '@/app/Component/Container'
-import { logoFont } from '@/app/layout'
+import { Press_Start_2P } from 'next/font/google';
 
-export default function Header({ menu }) {
+const logoFont = Press_Start_2P({
+  weight: '400'
+});
+
+export default function Header({ menu, isLightTheme, setIsLightTheme }) {
     return (
         <header className={styles.header}>
             <Container classes={styles.header_container}>
@@ -12,7 +18,7 @@ export default function Header({ menu }) {
                      <Navigation items={menu}/>
                 </HeaderWrapper>
                 <HeaderWrapper>
-                    <ThemeSwitch isLightTheme={true} />
+                    <ThemeSwitch isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} />
                 </HeaderWrapper>
             </Container>
         </header>

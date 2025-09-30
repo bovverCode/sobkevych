@@ -1,15 +1,11 @@
-export default function ThemeSwitch({ isLightTheme }) {
+import styles from '@/app/styles/Component/ThemeSwitch.module.scss';
+
+export default function ThemeSwitch({ isLightTheme, setIsLightTheme }) {
     return (
         <div className='theme-switch'>
-            <input 
-                type='checkbox' 
-                id='theme-switch-checkbox' 
-                name='theme-switch-checkbox' 
-                // checked={!isLightTheme && 'checked'}
-            />
-            <label htmlFor='theme-switch-checkbox' >
+            <button onClick={() => setIsLightTheme(!isLightTheme)}>
                 {isLightTheme ? 'Dark theme' : 'Light theme'}
-            </label>
+            </button>
         </div>
     );
 }

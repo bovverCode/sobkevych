@@ -1,3 +1,4 @@
+'use client'
 import Header from '@/app/Block/Header';
 import Footer from '@/app/Block/Footer';
 import AboutBlock from '@/app/Block/AboutBlock';
@@ -13,18 +14,21 @@ import {
     skillBlockData,
     contactBlockData
  } from './data';
+import { useState } from 'react';
 
 export default function Home() {
- return (
-    <>
-        <Header menu={menuData}/>
-        <AboutBlock aboutData={aboutBlockData}/>
-        <ServiceBlock serviceData={serviceBlockData}/>
-        <ExperienceBlock experienceData={experienceBlockData}/>
-        <Footer>
-            <SkillBlock skillData={skillBlockData}/>
-            <ContactBlock contactData={contactBlockData}/>
-        </Footer>
-    </>
- )
+    const [isLightTheme, setIsLightTheme] = useState(false);
+    const bodyClassName = !isLightTheme ? ['dark_theme'] : [];
+    return (
+        <body className={bodyClassName}>
+            <Header menu={menuData} isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme}/>
+            <AboutBlock aboutData={aboutBlockData} isLightTheme={isLightTheme}/>
+            <ServiceBlock serviceData={serviceBlockData} isLightTheme={isLightTheme}/>
+            <ExperienceBlock experienceData={experienceBlockData} isLightTheme={isLightTheme}/>
+            <Footer>
+                <SkillBlock skillData={skillBlockData} isLightTheme={isLightTheme}/>
+                <ContactBlock contactData={contactBlockData} isLightTheme={isLightTheme}/>
+            </Footer>
+        </body>
+    );
 }
