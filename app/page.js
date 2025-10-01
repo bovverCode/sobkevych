@@ -12,20 +12,32 @@ import {
     serviceBlockData, 
     experienceBlockData,
     skillBlockData,
-    contactBlockData
+    contactBlockData,
+    menu
  } from './data';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Home() {
     const [isLightTheme, setIsLightTheme] = useState(false);
     const bodyClassName = !isLightTheme ? ['dark_theme'] : [];
-    return (
+    const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));
+    const menuHandlers = [aboutRef, serviceRef, experienceRef, footerRef].map(ref => {
+        return () => {
+            if (ref.current) {
+                window.scroll({
+                    top: ref.current.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+    return ( 
         <body className={bodyClassName}>
-            <Header menu={menuData} isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme}/>
-            <AboutBlock aboutData={aboutBlockData} isLightTheme={isLightTheme}/>
-            <ServiceBlock serviceData={serviceBlockData} isLightTheme={isLightTheme}/>
-            <ExperienceBlock experienceData={experienceBlockData} isLightTheme={isLightTheme}/>
-            <Footer>
+            <Header menu={menuData} isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} handlers={menuHandlers}/>
+            <AboutBlock aboutData={aboutBlockData} isLightTheme={isLightTheme} ref={aboutRef}/>
+            <ServiceBlock serviceData={serviceBlockData} isLightTheme={isLightTheme} ref={serviceRef}/>
+            <ExperienceBlock experienceData={experienceBlockData} isLightTheme={isLightTheme} ref={experienceRef}/>
+            <Footer ref={footerRef}>
                 <SkillBlock skillData={skillBlockData} isLightTheme={isLightTheme}/>
                 <ContactBlock contactData={contactBlockData} isLightTheme={isLightTheme}/>
             </Footer>

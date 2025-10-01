@@ -9,16 +9,16 @@ const logoFont = Press_Start_2P({
   weight: '400'
 });
 
-export default function Header({ menu, isLightTheme, setIsLightTheme }) {
+export default function Header({ menu, isLightTheme, setIsLightTheme, handlers }) {
     return (
         <header className={styles.header}>
             <Container classes={styles.header_container}>
                 <HeaderWrapper>
                     <Logo/>
-                     <Navigation items={menu}/>
+                     <Navigation items={menu} handlers={handlers}/>
                 </HeaderWrapper>
                 <HeaderWrapper>
-                    <ThemeSwitch isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} />
+                    <ThemeSwitch isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme}/>
                 </HeaderWrapper>
             </Container>
         </header>
@@ -35,14 +35,17 @@ function HeaderWrapper({ children }) {
 
 function Logo() {
     return (
-        <a href="/" className={"logo " + logoFont.className}>
+        <a href='/' className={'logo ' + logoFont.className}>
             {'<sobkevych.dev/>'}
         </a>
     );
 }
 
-function Navigation({ items }) {
-    const menuItems = items.map(menuItem => <MenuItem key={menuItem.href} item={menuItem}/>);
+function Navigation({ items, handlers }) {
+    const menuItems = items.map(
+        (menuItem, index) => 
+        <MenuItem key={menuItem.href} item={menuItem} handleClick={handlers[index]}/>
+    );
     return (
         <nav className='menu'>
             <ul>
@@ -52,21 +55,16 @@ function Navigation({ items }) {
     );
 }
 
-function MenuItem({ item }) {
-    let children = null;
-    if (item.hasOwnProperty('sub')) {
-        children = item.sub.map(child => <MenuItem key={child.href} item={child}/>);
+function MenuItem({ item, handleClick }) {
+    function handleMenuItemClick(e) {
+        e.preventDefault();
+        handleClick();
     }
     return (
         <li>
-            <a href={item.href}>
+            <a href={item.href} onClick={handleMenuItemClick}>
                 {item.title}
             </a>
-            {children !== null && (
-                <ul className='sub_menu'>
-                    {children}
-                </ul>
-            )}
         </li>
     );
 }

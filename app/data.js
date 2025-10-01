@@ -1,25 +1,19 @@
 export const menu = [
     {
-        title: 'Home',
-        href: '/'
-    },
-    {
-        title: 'Shop',
-        href: '/shop/'
+        title: 'About me',
+        href: '/about'
     },
     {
         title: 'Service',
-        href: '/service/',
-        // sub: [
-        //     {
-        //         title: 'Service Uzhhorod',
-        //         href: '/service/uzhhorod/'
-        //     },
-        //     {
-        //         title: 'Service Chernihiv',
-        //         href: '/service/chernihiv/'
-        //     }
-        // ]
+        href: '/service'
+    },
+    {
+        title: 'Experience',
+        href: '/experience',
+    },
+    {
+        title: 'Overview & Contact',
+        href: '/overview',
     }
 ];
 
@@ -86,7 +80,7 @@ export const experienceBlockData = {
                 'Gulp',
                 'JS',
                 'WordPress',
-                'Pixel perferct sites',
+                'Pixel perfect sites',
                 'Figma/Photoshop',
                 'Bootstrap'
             ]

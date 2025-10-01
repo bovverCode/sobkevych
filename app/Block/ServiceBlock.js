@@ -1,9 +1,9 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ServiceBlock.module.scss'
 
-export default function ServiceBlock({ serviceData, isLightTheme }) {
+export default function ServiceBlock({ serviceData, isLightTheme, ref }) {
     return (
-        <section className="block">
+        <section className="block" ref={ref}>
             <Container>
                 <h2 className="text_center mb40">
                     {serviceData.title}
