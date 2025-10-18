@@ -15,11 +15,11 @@ import {
     contactBlockData,
     menu
  } from './data';
-import { useRef, useState } from 'react';
+import { useRef} from 'react';
+import { ThemeProvider } from '@/app/Component/ThemeContext';
+import Body from './Component/Body';
 
 export default function Home() {
-    const [isLightTheme, setIsLightTheme] = useState(false);
-    const bodyClassName = !isLightTheme ? ['dark_theme'] : [];
     const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));
     const menuHandlers = [aboutRef, serviceRef, experienceRef, footerRef].map(ref => {
         return () => {
@@ -32,15 +32,17 @@ export default function Home() {
         }
     });
     return ( 
-        <body className={bodyClassName}>
-            <Header menu={menuData} isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme} handlers={menuHandlers}/>
-            <AboutBlock aboutData={aboutBlockData} isLightTheme={isLightTheme} ref={aboutRef}/>
-            <ServiceBlock serviceData={serviceBlockData} isLightTheme={isLightTheme} ref={serviceRef}/>
-            <ExperienceBlock experienceData={experienceBlockData} isLightTheme={isLightTheme} ref={experienceRef}/>
-            <Footer ref={footerRef}>
-                <SkillBlock skillData={skillBlockData} isLightTheme={isLightTheme}/>
-                <ContactBlock contactData={contactBlockData} isLightTheme={isLightTheme}/>
-            </Footer>
-        </body>
+        <ThemeProvider>
+            <Body>
+                <Header menu={menuData} handlers={menuHandlers}/>
+                <AboutBlock aboutData={aboutBlockData} ref={aboutRef}/>
+                <ServiceBlock serviceData={serviceBlockData} ref={serviceRef}/>
+                <ExperienceBlock experienceData={experienceBlockData} ref={experienceRef}/>
+                <Footer ref={footerRef}>
+                    <SkillBlock skillData={skillBlockData}/>
+                    <ContactBlock contactData={contactBlockData}/>
+                </Footer>
+            </Body>
+        </ThemeProvider>
     );
 }

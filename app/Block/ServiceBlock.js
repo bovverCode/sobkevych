@@ -1,7 +1,8 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ServiceBlock.module.scss'
+import { useTheme } from "../Component/ThemeContext";
 
-export default function ServiceBlock({ serviceData, isLightTheme, ref }) {
+export default function ServiceBlock({ serviceData, ref }) {
     return (
         <section className="block" ref={ref}>
             <Container>
@@ -11,7 +12,7 @@ export default function ServiceBlock({ serviceData, isLightTheme, ref }) {
                 <div className={styles.service_block_row}>
                     {
                         serviceData.items.map((serviceItem, index) => {
-                            return <ServiceItem key={index} item={serviceItem} isLightTheme={isLightTheme}/>;
+                            return <ServiceItem key={index} item={serviceItem}/>;
                         })
                     }
                 </div>
@@ -20,13 +21,13 @@ export default function ServiceBlock({ serviceData, isLightTheme, ref }) {
     )
 }
 
-function ServiceItem({ item, isLightTheme }) {
+function ServiceItem({ item }) {
     let list = null;
     if (item.hasOwnProperty('list')) {
         list = item.list.map((item, index) => <li key={index}>{item}</li>)
     }
     const itemClassName = [styles.service_item];
-    !isLightTheme && itemClassName.push(styles.dark);
+    !useTheme().isLight && itemClassName.push(styles.dark);
     return (
         <div className={itemClassName.join(' ')}>
             <div className={styles.service_item_image + " text_center mb20"}>

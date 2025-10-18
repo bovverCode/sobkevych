@@ -1,10 +1,10 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/AboutBlock.module.scss';
-import { useRef } from "react";
+import { useTheme } from "../Component/ThemeContext";
 
-export default function AboutBlock({ aboutData, isLightTheme, ref }) {
+export default function AboutBlock({ aboutData, ref }) {
     const contentClassName = [styles.about_block_content];
-    !isLightTheme && contentClassName.push(styles.dark);
+    !useTheme().isLight && contentClassName.push(styles.dark);
     return (
         <section className="block" ref={ref}>
             <Container>

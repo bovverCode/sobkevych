@@ -1,7 +1,8 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ExperienceBlock.module.scss'
+import { useTheme } from "../Component/ThemeContext";
 
-export default function ExperienceBlock({ experienceData, isLightTheme, ref }) {
+export default function ExperienceBlock({ experienceData, ref }) {
     return (
         <section className="block" ref={ref}>
             <Container>
@@ -12,7 +13,7 @@ export default function ExperienceBlock({ experienceData, isLightTheme, ref }) {
                     {
                         experienceData.items.map(
                             (expItem, index) => 
-                            <ExperienceItem key={index} item={expItem} isLightTheme={isLightTheme}/>
+                            <ExperienceItem key={index} item={expItem}/>
                         )
                     }
                 </div>
@@ -21,9 +22,9 @@ export default function ExperienceBlock({ experienceData, isLightTheme, ref }) {
     );
 }
 
-function ExperienceItem({ item, isLightTheme }) {
+function ExperienceItem({ item }) {
     const itemClassName = [styles.experience_item];
-    !isLightTheme && itemClassName.push(styles.dark)
+    !useTheme().isLight && itemClassName.push(styles.dark)
     return (
         <div className={itemClassName.join(' ')}>
             <div className={styles.experience_item_heading + " mb20 text_center"}>

@@ -4,12 +4,12 @@ import ThemeSwitch from '@/app/Component/ThemSwitch'
 import styles from '@/app/styles/Block/Header.module.scss';
 import Container from '@/app/Component/Container'
 import { Press_Start_2P } from 'next/font/google';
-
+import { ThemeProvider, useTheme } from '@/app/Component/ThemeContext';
 const logoFont = Press_Start_2P({
   weight: '400'
 });
 
-export default function Header({ menu, isLightTheme, setIsLightTheme, handlers }) {
+export default function Header({ menu, handlers }) {
     return (
         <header className={styles.header}>
             <Container classes={styles.header_container}>
@@ -18,7 +18,7 @@ export default function Header({ menu, isLightTheme, setIsLightTheme, handlers }
                      <Navigation items={menu} handlers={handlers}/>
                 </HeaderWrapper>
                 <HeaderWrapper>
-                    <ThemeSwitch isLightTheme={isLightTheme} setIsLightTheme={setIsLightTheme}/>
+                    <ThemeSwitch/>
                 </HeaderWrapper>
             </Container>
         </header>
