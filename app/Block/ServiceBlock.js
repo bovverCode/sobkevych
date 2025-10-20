@@ -1,6 +1,6 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/ServiceBlock.module.scss'
-import { useTheme } from "../Component/ThemeContext";
+import { useTheme } from "@/app/Component/ThemeContext";
 
 export default function ServiceBlock({ serviceData, ref }) {
     return (

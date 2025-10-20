@@ -1,5 +1,5 @@
 import styles from '@/app/styles/Block/ContactBlock.module.scss';
-import { useTheme } from '../Component/ThemeContext';
+import { useTheme } from '@/app/Component/ThemeContext';
 
 export default function ContactBlock({ contactData }) {
     const blockClassName = [styles.contact_block, 'w50'];

@@ -15,9 +15,10 @@ import {
     contactBlockData,
     menu
  } from './data';
-import { useRef} from 'react';
+import { useRef } from 'react';
 import { ThemeProvider } from '@/app/Component/ThemeContext';
-import Body from './Component/Body';
+import Body from '@/app/Component/Body';
+import useWindowSize from './Functions/useWindowSize';
 
 export default function Home() {
     const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));

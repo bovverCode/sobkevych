@@ -6,7 +6,10 @@ export const ThemeDispatchContext = createContext(null);
 export function ThemeProvider({ children }) {
     const [theme, dispatch] = useReducer(
         themeReducer,
-        {isLight: true}
+        {
+            isLight: true,
+            menuOpened: false
+        }
     )
 
     return (
@@ -28,11 +31,17 @@ export function useThemeDispatch() {
 
 function themeReducer(theme, action) {
     switch (action.type) {
-        case 'changed': {
+        case 'color_schema_changed': {
             return {
                 ...theme,
                 isLight: !theme.isLight
             };
+        }
+        case 'mobile_menu_toggle': {
+            return {
+                ...theme,
+                menuOpened: !theme.menuOpened
+            }
         }
     }
 }

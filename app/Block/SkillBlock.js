@@ -1,5 +1,5 @@
 import styles from '@/app/styles/Block/SkillBlock.module.scss';
-import { useTheme } from '../Component/ThemeContext';
+import { useTheme } from '@/app/Component/ThemeContext';
 
 export default function SkillBlock({ skillData }) {
     const blockClassName = [styles.skill_block, 'w50'];

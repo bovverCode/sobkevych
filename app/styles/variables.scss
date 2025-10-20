@@ -3,11 +3,13 @@ $text-color: #000;
 $text-hover-color: #fc8421;
 $box-color: #e4ffb8;
 $line-height: 1.35;
+$mobile-menu-bg: #e9def3;;
 
 // Dark theme.
 $dark-text-color: #fff;
 $dark-text-hover-color: #acdaff;
 $dark-box-color: #236426;
+$dark-mobile-menu-bg: #322b38;;
 
 @mixin color-transition {
     transition: color .1s linear;
