@@ -6,6 +6,16 @@
     &__dark {
         background: #09121d;
     }
+    @media only screen and (max-width : 1400px) {
+        width: 100%;
+        padding: 40px 20px;
+        h2 {
+            text-align: center;
+        }
+    }
+    @media only screen and (max-width : 600px) {
+        padding: 20px;
+    }
 }
 
 .contact_item {
@@ -16,5 +26,8 @@
         height: 20px;
         object-fit: contain;
         margin-right: 4px;
+    }
+    @media only screen and (max-width : 1400px) {
+        justify-content: center;
     }
 }
