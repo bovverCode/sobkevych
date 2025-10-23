@@ -18,7 +18,6 @@ import {
 import { useRef } from 'react';
 import { ThemeProvider } from '@/app/Component/ThemeContext';
 import Body from '@/app/Component/Body';
-import useWindowSize from './Functions/useWindowSize';
 
 export default function Home() {
     const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));
