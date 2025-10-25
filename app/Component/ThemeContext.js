@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 
 export const ThemeContext = createContext(null);
 export const ThemeDispatchContext = createContext(null);
@@ -8,9 +8,28 @@ export function ThemeProvider({ children }) {
         themeReducer,
         {
             isLight: true,
-            menuOpened: false
+            menuOpened: false,
+            windowWidth: null,
         }
     )
+
+    useEffect(() => {
+        dispatch({
+            type: 'resize',
+            windowWidth: window.innerWidth,
+        });
+        const handleResize = () => {
+            dispatch({
+                type: 'resize',
+                windowWidth: window.innerWidth,
+            });
+        }
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <ThemeContext value={theme}>
@@ -19,6 +38,10 @@ export function ThemeProvider({ children }) {
             </ThemeDispatchContext>
         </ThemeContext>
     )
+}
+
+export function useIsMobile() {
+    return useTheme().windowWidth < 1200;
 }
 
 export function useTheme() {
@@ -34,14 +57,23 @@ function themeReducer(theme, action) {
         case 'color_schema_changed': {
             return {
                 ...theme,
-                isLight: !theme.isLight
+                isLight: !theme.isLight,
             };
         }
         case 'mobile_menu_toggle': {
             return {
                 ...theme,
-                menuOpened: !theme.menuOpened
+                menuOpened: !theme.menuOpened,
             }
+        }
+        case 'resize': {
+            return {
+                ...theme,
+                windowWidth: action.windowWidth,
+            }
+        }
+        default: {
+            return theme;
         }
     }
 }

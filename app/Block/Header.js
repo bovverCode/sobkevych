@@ -4,29 +4,27 @@ import ThemeSwitch from '@/app/Component/ThemSwitch'
 import styles from '@/app/styles/Block/Header.module.scss';
 import Container from '@/app/Component/Container'
 import { Press_Start_2P } from 'next/font/google';
-import useWindowSize from '@/app/Functions/useWindowSize';
-import { useTheme, useThemeDispatch } from '../Component/ThemeContext';
+import { useTheme, useThemeDispatch, useIsMobile } from '@/app/Component/ThemeContext';
 
 const logoFont = Press_Start_2P({
   weight: '400'
 });
 
 export default function Header({ menu, handlers }) {
-    const isMobile = useWindowSize() <= 1200;
     const themeDispatch = useThemeDispatch();
     return (
         <header className={styles.header}>
             <Container classes={styles.header_container}>
                 <HeaderWrapper>
                     <Logo/>
-                    {!isMobile && <Navigation items={menu} handlers={handlers}/>}
+                    {!useIsMobile() && <Navigation items={menu} handlers={handlers}/>}
                 </HeaderWrapper>
                 <HeaderWrapper>
                     <ThemeSwitch/>
-                    {isMobile && <Burger handleClick={() => themeDispatch({type: 'mobile_menu_toggle'})}/>}
+                    {useIsMobile() && <Burger handleClick={() => themeDispatch({type: 'mobile_menu_toggle'})}/>}
                 </HeaderWrapper>
             </Container>
-            {isMobile && (
+            {useIsMobile() && (
                 <MobileNavigation>
                     <Navigation items={menu} handlers={handlers}/>
                 </MobileNavigation>
@@ -66,12 +64,12 @@ function Navigation({ items, handlers }) {
 }
 
 function MenuItem({ item, handleClick }) {
-    const isMobile = useWindowSize() <= 1200;
     const themeDispatch = useThemeDispatch();
+    const isMobileVersion = useIsMobile();
     function handleMenuItemClick(e) {
         e.preventDefault();
         handleClick();
-        if (isMobile) {
+        if (isMobileVersion) {
             themeDispatch({type: 'mobile_menu_toggle'});
         }
     }
