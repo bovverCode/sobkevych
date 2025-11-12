@@ -14,6 +14,16 @@ export function ThemeProvider({ children }) {
     )
 
     useEffect(() => {
+        if (window !== undefined) {
+        const isLightLocal = localStorage.getItem('isLight')  === 1 ? true : false;
+            dispatch({
+                type: 'color_schema_changed',
+                isLight: isLightLocal
+            });
+        }
+    }, []);
+
+    useEffect(() => {
         dispatch({
             type: 'resize',
             windowWidth: window.innerWidth,
@@ -55,9 +65,12 @@ export function useThemeDispatch() {
 function themeReducer(theme, action) {
     switch (action.type) {
         case 'color_schema_changed': {
+            if (window !== undefined) {
+                localStorage.setItem('isLight', action.isLight ? 1 : 0);
+            }
             return {
                 ...theme,
-                isLight: !theme.isLight,
+                isLight: action.isLight,
             };
         }
         case 'mobile_menu_toggle': {
