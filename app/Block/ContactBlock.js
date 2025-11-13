@@ -1,9 +1,10 @@
 import styles from '@/app/styles/Block/ContactBlock.module.scss';
-import { useTheme } from '@/app/Component/ThemeContext';
+import { useIsLight } from '@/app/Component/ThemeContext';
 
 export default function ContactBlock({ contactData }) {
     const blockClassName = [styles.contact_block, 'w50'];
-    !useTheme().isLight && blockClassName.push(styles.contact_block__dark);
+    const isLight = useIsLight();
+    !isLight && blockClassName.push(styles.contact_block__dark);
     return (
         <div className={blockClassName.join(' ')}>
             <h2 className='mb20'>

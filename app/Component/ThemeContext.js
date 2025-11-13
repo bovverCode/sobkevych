@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, act } from "react";
 
 export const ThemeContext = createContext(null);
 export const ThemeDispatchContext = createContext(null);
@@ -7,18 +7,24 @@ export function ThemeProvider({ children }) {
     const [theme, dispatch] = useReducer(
         themeReducer,
         {
-            isLight: true,
+            schema: 'light',
             menuOpened: false,
             windowWidth: null,
         }
     )
 
     useEffect(() => {
-        if (window !== undefined) {
-        const isLightLocal = localStorage.getItem('isLight')  === 1 ? true : false;
+        if (localStorage.getItem('schema') === 'null') {
+            localStorage.setItem('schema', theme.schema);
+        }
+    }, []);
+
+    useEffect(() => {
+        const themeSchema = localStorage.getItem('schema');
+        if (themeSchema !== null) {
             dispatch({
                 type: 'color_schema_changed',
-                isLight: isLightLocal
+                schema: themeSchema
             });
         }
     }, []);
@@ -50,6 +56,10 @@ export function ThemeProvider({ children }) {
     )
 }
 
+export function useIsLight() {
+    return useTheme().schema === 'light';
+}
+
 export function useIsMobile() {
     return useTheme().windowWidth < 1200;
 }
@@ -66,11 +76,14 @@ function themeReducer(theme, action) {
     switch (action.type) {
         case 'color_schema_changed': {
             if (window !== undefined) {
-                localStorage.setItem('isLight', action.isLight ? 1 : 0);
+                localStorage.setItem('schema', action.schema);
+                const html = document.documentElement;
+                html.classList.add(action.schema);
+                html.dataset.theme = action.schema;
             }
             return {
                 ...theme,
-                isLight: action.isLight,
+                schema: action.schema,
             };
         }
         case 'mobile_menu_toggle': {

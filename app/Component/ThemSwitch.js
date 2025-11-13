@@ -1,19 +1,35 @@
-import { useTheme, useThemeDispatch } from '@/app/Component/ThemeContext';
+import { useIsLight, useTheme, useThemeDispatch } from '@/app/Component/ThemeContext';
 import styles from '@/app/styles/Component/ThemeSwitch.module.scss';
+import { useEffect, useState } from 'react';
 
 export default function ThemeSwitch() {
-    const themeContext = useTheme();
     const themeDispatch = useThemeDispatch();
+    const isLight = useIsLight();
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    });
+
+
+    if (!isMounted) {
+        return (
+            <div className={styles.theme_switch}>
+                Loading...
+            </div>
+        );
+    }
+
     const handleClick = () => {
         themeDispatch({
             type: 'color_schema_changed',
-            isLight: !themeContext.isLight
+            schema: isLight ? 'dark' : 'light'
         });
     };
     return (
         <div className={styles.theme_switch}>
             <button onClick={handleClick}>
-                {themeContext.isLight ? 'Dark theme' : 'Light theme'}
+                {isLight ? 'Dark theme' : 'Light theme'}
             </button>
         </div>
     );

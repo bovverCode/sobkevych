@@ -1,27 +1,31 @@
-// Light theme.
-$text-color: #000;
-$text-hover-color: #fc8421;
-$box-color: #e4ffb8;
 $line-height: 1.35;
-$mobile-menu-bg: #e9def3;;
+
+// Light theme.
+:root[data-theme='light'] {
+    --text-color: #000;
+    --text-hover-color: #fc8421;
+    --box-color: #e4ffb8;
+    --mobile-menu-bg: #e9def3;
+    --body-bg: #fff;
+}
 
 // Dark theme.
-$dark-text-color: #fff;
-$dark-text-hover-color: #acdaff;
-$dark-box-color: #236426;
-$dark-mobile-menu-bg: #322b38;;
+:root[data-theme='dark'] {
+    --text-color: #fff;
+    --text-hover-color: #acdaff;
+    --box-color: #236426;
+    --mobile-menu-bg: #322b38;
+    --body-bg: #1b1b1b;
+}
 
 @mixin color-transition {
     transition: color .1s linear;
 }
 
 @mixin content-card {
-    background-color: $box-color;
+    background-color: var(--box-color);
     border-radius: 10px;
     padding: 30px;
-    &.dark {
-        background: $dark-box-color;
-    }
 }
 
 

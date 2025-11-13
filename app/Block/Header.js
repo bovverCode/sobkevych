@@ -4,7 +4,8 @@ import ThemeSwitch from '@/app/Component/ThemSwitch'
 import styles from '@/app/styles/Block/Header.module.scss';
 import Container from '@/app/Component/Container'
 import { Press_Start_2P } from 'next/font/google';
-import { useTheme, useThemeDispatch, useIsMobile } from '@/app/Component/ThemeContext';
+import { useTheme, useThemeDispatch, useIsMobile, useIsLight } from '@/app/Component/ThemeContext';
+import { useEffect, useState } from 'react';
 
 const logoFont = Press_Start_2P({
   weight: '400'
@@ -12,19 +13,23 @@ const logoFont = Press_Start_2P({
 
 export default function Header({ menu, handlers }) {
     const themeDispatch = useThemeDispatch();
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     return (
         <header className={styles.header}>
             <Container classes={styles.header_container}>
                 <HeaderWrapper>
                     <Logo/>
-                    {!useIsMobile() && <Navigation items={menu} handlers={handlers}/>}
+                    {!useIsMobile() && isMounted && <Navigation items={menu} handlers={handlers}/>}
                 </HeaderWrapper>
                 <HeaderWrapper>
                     <ThemeSwitch/>
-                    {useIsMobile() && <Burger handleClick={() => themeDispatch({type: 'mobile_menu_toggle'})}/>}
+                    {useIsMobile() && isMounted && <Burger handleClick={() => themeDispatch({type: 'mobile_menu_toggle'})}/>}
                 </HeaderWrapper>
             </Container>
-            {useIsMobile() && (
+            {useIsMobile() && isMounted && (
                 <MobileNavigation>
                     <Navigation items={menu} handlers={handlers}/>
                 </MobileNavigation>
@@ -83,8 +88,9 @@ function MenuItem({ item, handleClick }) {
 }
 
 function Burger({ handleClick }) {
+    const isLight = useIsLight();
     const className = styles.burger + 
-        (!useTheme().isLight ? ' ' + styles.burger_dark : '') +
+        (!isLight ? ' ' + styles.burger_dark : '') +
         (useTheme().menuOpened ? ' ' + styles.burger_opened : '');
     return (
         <button className={className} onClick={handleClick}>
@@ -96,9 +102,10 @@ function Burger({ handleClick }) {
 }
 
 function MobileNavigation({ children }) {
+    const isLight = useIsLight();
     const className = styles.header_mobile +
         (useTheme().menuOpened ? ' ' + styles.header_mobile_opened : '') +
-        (!useTheme().isLight ? ' ' + styles.header_mobile_dark : '');
+        (!isLight ? ' ' + styles.header_mobile_dark : '');
     return (
         <div className={className}>
             {children}

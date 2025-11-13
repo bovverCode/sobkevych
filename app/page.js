@@ -17,7 +17,6 @@ import {
  } from './data';
 import { useRef } from 'react';
 import { ThemeProvider } from '@/app/Component/ThemeContext';
-import Body from '@/app/Component/Body';
 
 export default function Home() {
     const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));
@@ -33,16 +32,14 @@ export default function Home() {
     });
     return ( 
         <ThemeProvider>
-            <Body>
-                <Header menu={menuData} handlers={menuHandlers}/>
-                <AboutBlock aboutData={aboutBlockData} ref={aboutRef}/>
-                <ServiceBlock serviceData={serviceBlockData} ref={serviceRef}/>
-                <ExperienceBlock experienceData={experienceBlockData} ref={experienceRef}/>
-                <Footer ref={footerRef}>
-                    <SkillBlock skillData={skillBlockData}/>
-                    <ContactBlock contactData={contactBlockData}/>
-                </Footer>
-            </Body>
+            <Header menu={menuData} handlers={menuHandlers}/>
+            <AboutBlock aboutData={aboutBlockData} ref={aboutRef}/>
+            <ServiceBlock serviceData={serviceBlockData} ref={serviceRef}/>
+            <ExperienceBlock experienceData={experienceBlockData} ref={experienceRef}/>
+            <Footer ref={footerRef}>
+                <SkillBlock skillData={skillBlockData}/>
+                <ContactBlock contactData={contactBlockData}/>
+            </Footer>
         </ThemeProvider>
     );
 }
