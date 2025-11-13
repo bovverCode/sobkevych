@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
                   try {
                     const html = document.documentElement;
                     const theme = localStorage.hasOwnProperty('schema') ? localStorage.getItem('schema') : 'light';
-                    html.classList.add(theme);
                     html.dataset.theme = theme;
                   } catch (e) {}
                 })();

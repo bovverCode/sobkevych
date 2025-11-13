@@ -1,4 +1,5 @@
 $line-height: 1.35;
+$value-card-color: #000;
 
 // Light theme.
 :root[data-theme='light'] {
@@ -7,6 +8,8 @@ $line-height: 1.35;
     --box-color: #e4ffb8;
     --mobile-menu-bg: #e9def3;
     --body-bg: #fff;
+    --skill-bg: #f9f1fd;
+    --contact-bg: #ecf5ff;
 }
 
 // Dark theme.
@@ -16,6 +19,9 @@ $line-height: 1.35;
     --box-color: #236426;
     --mobile-menu-bg: #322b38;
     --body-bg: #1b1b1b;
+    --skill-bg: #4e3c53;
+    --contact-bg: #09121d;
+    background: #0f1029;
 }
 
 @mixin color-transition {
@@ -32,6 +38,7 @@ $line-height: 1.35;
 @mixin value-card {
     padding: 3px 8px;
     background: #fff;
+    color: $value-card-color;
     border-radius: 6px;
 }
 

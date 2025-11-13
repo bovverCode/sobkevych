@@ -1,11 +1,8 @@
 @use '../variables' as *;
 
 .contact_block {
-    background: #ecf5ff;
+    background: var(--contact-bg);
     padding: 50px;
-    &__dark {
-        background: #09121d;
-    }
     @media only screen and (max-width : 1400px) {
         width: 100%;
         padding: 40px 20px;

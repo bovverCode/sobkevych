@@ -78,7 +78,6 @@ function themeReducer(theme, action) {
             if (window !== undefined) {
                 localStorage.setItem('schema', action.schema);
                 const html = document.documentElement;
-                html.classList.add(action.schema);
                 html.dataset.theme = action.schema;
             }
             return {
