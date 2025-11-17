@@ -19,7 +19,10 @@ import { useRef } from 'react';
 import { ThemeProvider } from '@/app/Component/ThemeContext';
 
 export default function Home() {
-    const [aboutRef, serviceRef, experienceRef, footerRef] = menu.map(() => useRef(null));
+    const aboutRef = useRef(null);
+    const serviceRef = useRef(null);
+    const experienceRef = useRef(null);
+    const footerRef = useRef(null)
     const menuHandlers = [aboutRef, serviceRef, experienceRef, footerRef].map(ref => {
         return () => {
             if (ref.current) {

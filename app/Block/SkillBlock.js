@@ -1,10 +1,7 @@
 import styles from '@/app/styles/Block/SkillBlock.module.scss';
-import { useIsLight } from '@/app/Component/ThemeContext';
 
 export default function SkillBlock({ skillData }) {
-    const isLight = useIsLight();
     const blockClassName = [styles.skill_block, 'w50'];
-    !isLight && blockClassName.push(styles.skill_block__dark);
     return (
         <div className={blockClassName.join(' ')}>
             <h2 className='mb20'>
@@ -21,9 +18,7 @@ export default function SkillBlock({ skillData }) {
 }
 
 function SkillArea({ areaData }) {
-    const isLight = useIsLight();
     const areaClassName = [styles.skill_area];
-    !isLight && areaClassName.push(styles.dark);
     return (
         <div className={areaClassName.join(' ')}>
             <h3 className='mb10'>

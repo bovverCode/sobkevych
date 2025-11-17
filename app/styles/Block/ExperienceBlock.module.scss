@@ -10,9 +10,10 @@
     @include column3;
     @include content-card;
     &_heading {
+        height: 140px;
+        position: relative;
         img {
             max-width: 100%;
-            height: 140px;
             object-fit: contain;
         }
     }

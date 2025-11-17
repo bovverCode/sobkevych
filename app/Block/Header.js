@@ -4,8 +4,9 @@ import ThemeSwitch from '@/app/Component/ThemSwitch'
 import styles from '@/app/styles/Block/Header.module.scss';
 import Container from '@/app/Component/Container'
 import { Press_Start_2P } from 'next/font/google';
-import { useTheme, useThemeDispatch, useIsMobile, useIsLight } from '@/app/Component/ThemeContext';
+import { useTheme, useThemeDispatch, useIsMobile } from '@/app/Component/ThemeContext';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const logoFont = Press_Start_2P({
   weight: '400'
@@ -48,9 +49,9 @@ function HeaderWrapper({ children }) {
 
 function Logo() {
     return (
-        <a href='/' className={'logo ' + logoFont.className}>
-            {'<sobkevych.dev/>'}
-        </a>
+        <Link href='/' className={'logo ' + logoFont.className}>
+              {'<sobkevych.dev/>'}
+        </Link>
     );
 }
 
@@ -88,9 +89,7 @@ function MenuItem({ item, handleClick }) {
 }
 
 function Burger({ handleClick }) {
-    const isLight = useIsLight();
     const className = styles.burger + 
-        (!isLight ? ' ' + styles.burger_dark : '') +
         (useTheme().menuOpened ? ' ' + styles.burger_opened : '');
     return (
         <button className={className} onClick={handleClick}>
@@ -102,10 +101,8 @@ function Burger({ handleClick }) {
 }
 
 function MobileNavigation({ children }) {
-    const isLight = useIsLight();
     const className = styles.header_mobile +
-        (useTheme().menuOpened ? ' ' + styles.header_mobile_opened : '') +
-        (!isLight ? ' ' + styles.header_mobile_dark : '');
+        (useTheme().menuOpened ? ' ' + styles.header_mobile_opened : '');
     return (
         <div className={className}>
             {children}

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, act } from "react";
+import { createContext, useContext, useReducer, useEffect, useRef } from "react";
 
 export const ThemeContext = createContext(null);
 export const ThemeDispatchContext = createContext(null);
@@ -12,24 +12,22 @@ export function ThemeProvider({ children }) {
             windowWidth: null,
         }
     )
+    const didMount = useRef(false);
 
     useEffect(() => {
-        if (localStorage.getItem('schema') === 'null') {
+        if (!didMount.current) {
+            didMount.current = true;
+            return;
+        }
+        const stored = localStorage.getItem('schema');
+        if (stored !== theme.schema) {
             localStorage.setItem('schema', theme.schema);
+            document.documentElement.dataset.theme = theme.schema;
         }
-    }, []);
+    }, [theme.schema]);
 
     useEffect(() => {
-        const themeSchema = localStorage.getItem('schema');
-        if (themeSchema !== null) {
-            dispatch({
-                type: 'color_schema_changed',
-                schema: themeSchema
-            });
-        }
-    }, []);
-
-    useEffect(() => {
+        if (typeof window === 'undefined') return;
         dispatch({
             type: 'resize',
             windowWidth: window.innerWidth,
@@ -75,11 +73,6 @@ export function useThemeDispatch() {
 function themeReducer(theme, action) {
     switch (action.type) {
         case 'color_schema_changed': {
-            if (window !== undefined) {
-                localStorage.setItem('schema', action.schema);
-                const html = document.documentElement;
-                html.dataset.theme = action.schema;
-            }
             return {
                 ...theme,
                 schema: action.schema,

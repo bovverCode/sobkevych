@@ -1,11 +1,9 @@
 import Container from "@/app/Component/Container";
 import styles from '@/app/styles/Block/AboutBlock.module.scss';
-import { useIsLight} from "@/app/Component/ThemeContext";
+import Image from "next/image";
 
 export default function AboutBlock({ aboutData, ref }) {
     const contentClassName = [styles.about_block_content];
-    const isLight = useIsLight();
-    !isLight && contentClassName.push(styles.dark);
     return (
         <section className="block" ref={ref}>
             <Container>
@@ -13,7 +11,15 @@ export default function AboutBlock({ aboutData, ref }) {
                     {aboutData.title}
                 </h2>
                 <div className="avatar mb20">
-                    <img src="/ava.jpg" />
+                    <Image 
+                        sizes='200px' 
+                        src='/ava.jpg' 
+                        width={200}
+                        height={200}
+                        alt="face"
+                        style={{ objectFit: "cover", borderRadius: "50%" }}
+                        priority
+                    />
                 </div>
                 <div className={contentClassName.join(' ')}>
                     {

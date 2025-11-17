@@ -9,7 +9,7 @@ export default function ThemeSwitch() {
 
     useEffect(() => {
         setIsMounted(true);
-    });
+    }, []);
 
 
     if (!isMounted) {

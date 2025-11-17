@@ -11,9 +11,8 @@
     @include column3;
     @include content-card;
     &_image {
+        position: relative;
         img {
-            max-width: 150px;
-            max-height: 150px;
         }
     }
     p {
