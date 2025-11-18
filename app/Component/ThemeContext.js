@@ -15,11 +15,18 @@ export function ThemeProvider({ children }) {
     const didMount = useRef(false);
 
     useEffect(() => {
+        const stored = localStorage.getItem('schema');
         if (!didMount.current) {
             didMount.current = true;
+            if (stored && stored !== theme.schema) {
+                dispatch({
+                    type: 'color_schema_changed',
+                    schema: stored
+                });
+            }
             return;
         }
-        const stored = localStorage.getItem('schema');
+
         if (stored !== theme.schema) {
             localStorage.setItem('schema', theme.schema);
             document.documentElement.dataset.theme = theme.schema;
