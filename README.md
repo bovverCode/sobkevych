@@ -17,7 +17,7 @@ Rebuild
 ```bash
 docker stop next-app
 docker rm next-app
-docker run -d -p 3000:3000 next-app
+docker build -t next-app .
 ```
 
 To run without docker
