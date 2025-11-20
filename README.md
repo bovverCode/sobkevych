@@ -1,11 +1,11 @@
 Build the image
 ```bash
-  docker build -t next-app .
+docker build -t next-app .
 ```
 
 Check whether the image is built
 ```bash
-  docker images
+docker images
 ```
 
 Run the container
