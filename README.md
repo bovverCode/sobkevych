@@ -22,5 +22,6 @@ docker build -t next-app .
 
 To run without docker
 ```bash
+npm i
 npm run dev
 ```
