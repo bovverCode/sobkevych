@@ -9,13 +9,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: Deploy
 
     steps:
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
-        -run: |
-          echo "HOST:[${{ secrets.HOST }}]"
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
