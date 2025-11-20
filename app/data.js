@@ -18,7 +18,7 @@ export const menu = [
 ];
 
 export const aboutBlockData = {
-    title: 'Who am I?)',
+    title: 'Who am I?))',
     image: './public/ava.jpg',
     text: [
         'My name is Denys and I love to create web applications and resolve customer issues effectievly.',
