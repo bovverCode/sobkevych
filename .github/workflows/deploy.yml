@@ -25,4 +25,4 @@ jobs:
           docker stop next-app
           docker rm next-app
           docker build -t next-app .
-          docker run -d --name next-app -p 3000:3000 next-app
+          docker run -d --name next-app next-app
