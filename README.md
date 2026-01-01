@@ -10,7 +10,7 @@ docker images
 
 Run the container
 ```bash
-docker run -d --name next-app -p 3000:3000 next-app
+docker run -d --name next-app -p 127.0.0.1:3000:3000 next-app
 ```
 
 Rebuild
